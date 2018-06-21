@@ -1,0 +1,147 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string s[15];
+int x, y;
+
+int main(){
+  for(int i = 0; i < 11; i++){
+    getline(cin, s[i]);
+  }
+  cin >> x >> y;
+  int new_x = x - 1;
+  int new_y = y - 1;
+  if(x > 3){
+    x++;
+  }
+  if(x > 6){
+    x++;
+  }
+  if(y > 3){
+    y++;
+  }
+  if(y > 6){
+    y++;
+  }
+  x--;
+  y--;
+  bool pr = 1;
+  if(new_x % 3 == 0){
+    int more_i = 0;
+    if(new_y % 3 == 0){
+      int more_j = 0;
+      for(int i = 0 + more_i; i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      }
+    }
+    else if(new_y % 3 == 1){
+      int more_j = 4;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      }
+    }
+    else{
+      int more_j = 8;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      } 
+    }
+  }
+  
+  if(new_x % 3 == 1){
+    int more_i = 4;
+    if(new_y % 3 == 0){
+      int more_j = 0;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      }
+    }
+    else if(new_y % 3 == 1){
+      int more_j = 4;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      }
+    }
+    else{
+      int more_j = 8;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      } 
+    }
+  }
+  else if(new_x % 3 == 2){
+    int more_i = 8;
+    if(new_y % 3 == 0){
+      int more_j = 0;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      }
+    }
+    else if(new_y % 3 == 1){
+      int more_j = 4;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      }
+    }
+    else{
+      int more_j = 8;
+      for(int i = 0 + more_i;i < 3 + more_i; i++){
+        for(int j = 0 + more_j; j < 3 + more_j; j++){
+          if(s[i][j] == '.'){
+            s[i][j] = '!';
+            pr = 0;
+          }
+        }
+      } 
+    }
+  }
+  for(int i = 0; i < 11; i++){
+    for(int j = 0; j < 11; j++){
+      if(pr && s[i][j] == '.'){
+        s[i][j] = '!';
+      }
+    }
+    cout << s[i] << endl;
+  }
+}
