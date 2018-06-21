@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, a[100500], b[100500], was[100500], cnt;
+vector <int> vec[100500];
+map <int, int> p;
+
+void dfs(int v){
+  was[v] = 1;
+  vec[cnt].push_back(v+1);
+  if(!was[a[v]]){
+    dfs(a[v]);
+  }
+}
+int main(){
+  scanf("%d", &n);
+  for(int i = 0; i < n; i++){
+    scanf("%d", &a[i]);
+    b[i] = a[i];
+  }
+  
+  sort(b, b + n);
+  
+  for(int i = 0; i < n; i++)
+    p[b[i]] = i;
+    
+  for(int i = 0; i < n; i++)
+    a[i] = p[a[i]];
+  
+  for(int i = 0; i < n; i++){
+    if(!was[a[i]]){
+      dfs(i);
+      cnt++;
+    }
+  }
+
+  printf("%d\n", cnt);
+  for(int i = 0; i < cnt; i++){
+    printf("%d ", vec[i].size());
+    for(int j = 0; j < vec[i].size(); j++){
+      printf("%d ", vec[i][j]);
+    }
+    printf("\n");
+  }
+  return 0;
+}
