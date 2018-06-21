@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n;
+long long ans2, a[100500], sum, pr[100500], now, sz[100500], mx, mx2, was[100500], cnt;
+long long ans1;
+
+int main(){
+  cin >> n;
+  for(int i = 1; i <= n; i++){
+    cin >> a[i];
+    pr[i] = a[i];
+  }
+  for(int i = 1; i <= n; i++){
+    now = i;
+    if(was[i])
+      continue;
+    cnt++;
+    while(true){
+      now = pr[now];
+      was[now] = 1;
+      sz[cnt]++;
+      if(now == i)
+        break;
+    }
+  }
+  sort(sz + 1, sz + 1 + cnt);
+  if(cnt >= 2){
+   sz[cnt-1] = sz[cnt-1] + sz[cnt];
+   sz[cnt] = 0;
+  }
+  for(int i = 1; i <= cnt; i++){
+    ans1 += sz[i]*sz[i]*1ll;
+  }
+  
+  cout << ans1;
+}
